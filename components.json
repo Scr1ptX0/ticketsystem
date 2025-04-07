@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks",
+    "firebase": "@/lib/firebase",
+    "firebaseHooks": "@/hooks/firebase",
+    "firebaseTypes": "@/lib/firebase/types",
+    "firebaseUtils": "@/lib/firebase/utils",
+    "firebaseConfig": "@/lib/firebase/config",
+    "firebaseAuth": "@/lib/firebase/auth",
+    "firebaseStorage": "@/lib/firebase/storage",
+    "firebaseFirestore": "@/lib/firebase/firestore",
+    "firebaseRealtimeDatabase": "@/lib/firebase/realtimeDatabase",
+    "firebaseFunctions": "@/lib/firebase/functions",
+    "firebaseAnalytics": "@/lib/firebase/analytics",
+    "firebasePerformance": "@/lib/firebase/performance",
+    "firebaseRemoteConfig": "@/lib/firebase/remoteConfig",
+    "firebaseMessaging": "@/lib/firebase/messaging",
+    "firebaseAppCheck": "@/lib/firebase/appCheck",
+    "firebaseDynamicLinks": "@/lib/firebase/dynamicLinks",
+    "firebaseMLKit": "@/lib/firebase/mlKit",
+    "firebaseInAppMessaging": "@/lib/firebase/inAppMessaging",
+    "firebaseInvites": "@/lib/firebase/invites",
+    "firebaseAppDistribution": "@/lib/firebase/appDistribution"
+    
+    
+
+  }
+}
