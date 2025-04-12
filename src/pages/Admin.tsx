@@ -515,8 +515,12 @@ const Admin = () => {
                       description="Загальна кількість бронювань"
                     />
                     <StatCard 
-                      title="Дохід" 
-                      value={`${bookings.reduce((sum, booking) => sum + booking.totalPrice, 0)} ₴`}
+                      title="Дохід"
+                      value={`${bookings.reduce(
+                        (sum, booking) =>
+                          booking.status !== 'cancelled' ? sum + booking.totalPrice : sum,
+                        0
+                      )} ₴`}
                       description="Загальний дохід від бронювань"
                     />
                   </div>

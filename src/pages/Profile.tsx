@@ -11,6 +11,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/components/ui/use-toast';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import { bookingsApi } from '@/services/firebaseApi';
 import { useEffect } from 'react';
 
 const Profile = () => {
@@ -130,6 +131,29 @@ const Profile = () => {
       setIsUpdating(false);
     }
   };
+
+  // Обробка скасування бронювання
+  const handleCancelBooking = async (bookingId: string) => {
+    try {
+      await bookingsApi.cancelBooking(bookingId);
+      // Оновлюємо список бронювань
+      setBookings(prevBookings => prevBookings.map(booking => 
+        booking.id === bookingId ? { ...booking, status: 'cancelled' } : booking
+      ));
+      
+      toast({
+        title: 'Бронювання скасовано',
+        description: 'Ваше бронювання успішно скасовано.',
+      });
+    } catch (error: any) {
+      toast({
+        title: 'Помилка',
+        description: 'Не вдалося скасувати бронювання: ' + error.message,
+        variant: 'destructive',
+      });
+    }
+  };
+
   
   // Показуємо екран завантаження
   if (isLoading) {
@@ -271,7 +295,14 @@ const Profile = () => {
                             {booking.status !== 'cancelled' && booking.status !== 'completed' && (
                               <div className="bg-secondary/50 px-6 py-3 flex justify-end">
                                 <Button variant="outline" size="sm" className="mr-2">Деталі</Button>
-                                <Button variant="outline" size="sm" className="text-red-500">Скасувати</Button>
+                                <Button 
+                                  variant="outline" 
+                                  size="sm" 
+                                  className="text-red-500"
+                                  onClick={() => handleCancelBooking(booking.id)}
+                                >
+                                  Скасувати
+                                </Button>
                               </div>
                             )}
                           </div>
